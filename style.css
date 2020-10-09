@@ -29,7 +29,7 @@
   #grid #article{
     padding-left:27px;
   }
-  @media(max-width:575px) {
+  @media(max-width:270px) {
     #grid{
       display: block;
     }
