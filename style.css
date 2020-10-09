@@ -2,16 +2,16 @@
     font-size: 19.5px;
     margin: 0px;
   }
-  a{
-    color: purple;
-    text-decoration: none;
-  }
   h1{
     font-size: 45px;
     text-align: center;
     margin: 0px;
     border-bottom: solid gray 1px;
     padding: 12px;
+  }
+  a{
+    color: blue;
+    text-decoration: none;
   }
   ul{
     border-right:1px solid gray;
@@ -29,7 +29,7 @@
   #grid #article{
     padding-left:27px;
   }
-  @media(max-width:800px) {
+  @media(max-width:575px) {
     #grid{
       display: block;
     }
