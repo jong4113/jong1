@@ -1,29 +1,66 @@
 <!doctype html>
 <html>
 <head>
-  <title>About Me!</title>
+  <title>C&R</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="colors.js"></script>
+  <script>
+    CountDownTimer('01/01/2073', 'countdown');
+    CountDownTimer('01/01/2033 00:00 AM', 'newcountdown');
+
+    function thousands_separators(num)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+  }
+
+    function CountDownTimer(dt, id){
+        var end = new Date(dt);
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                clearInterval(timer);
+                document.getElementById(id).innerHTML = '수고 했어!';
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var newHours = days*24 + hours;
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            document.getElementById(id).innerHTML = thousands_separators(newHours) + '시간/ ';
+            document.getElementById(id).innerHTML += minutes + '분/ ';
+            document.getElementById(id).innerHTML += seconds + '초';
+        }
+
+        timer = setInterval(showRemaining, 1000)
+    }
+  </script>
+  <style>
+    #countdown, #newcountdown {
+  display: inline;
+  color: red;
+  </style>
 </head>
 <body>
-  <h1><a href="index.html">About Me!</a></h1>
-  <input id="night_day" type="button" value="night" onclick="
-  nightDayHandler(this);
-  ">
-  <div id="grid">
-    <ul>
-      <li><a href="1.html">규칙</a></li>
-      <li><a href="2.html">우선순위</a></li>
-      <li><a href="3.html">버킷리스트</a></li>
-      <li><a href="4.html">카운트다운</a></li>
-    </ul>
+  <h1><a href="1.html">Countdown</a></h1>
     <div id="article">
-      <h2>소개</h2>
-      <p><strong>성장형 사고방식</strong>을 갖고 <strong>폴리매스</strong>가 되기 위해 끊임없이 공부하고 노력하는 무서운 17살의 내가 만든 첫 웹.</p>
-      <img src="https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/120654300_383107032704748_8673632321997895928_n.jpg?_nc_cat=108&_nc_sid=ae9488&_nc_eui2=AeERyh8kRmaV5l3ULr-WHV4X7cFOhSt-8uTtwU6FK37y5KFMjLZe7oB_dTNuZgzpMWWYbHVOpE3loZScvnXiPs-i&_nc_ohc=y3gKMsklXrIAX8ENY1u&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&tp=6&oh=be0f0366c31b6ba7a5100a30f48b8bc9&oe=5FA28E14" width="35%"/>
+      <h3>2073년까지 (70살까지)</h3>
+      <h2><div id="countdown"></div></h2>
     </div>
-  </div>
 </body>
 </html>
